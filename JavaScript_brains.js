@@ -13,6 +13,7 @@ const btnNewGame = document.querySelector('.btn--new');
 const btnHold = document.querySelector('.btn--hold');
 //final scores
 let scores, activePlayer, currentScore, playing;
+
 const init = function () {
   //Starting conditions
   scores = [0, 0];
@@ -24,7 +25,7 @@ const init = function () {
   current1El.textContent = 0;
   score0El.textContent = 0;
   score1El.textContent = 0;
-
+//reset graphics
   diceEl.classList.add('hidden');
   player0EL.classList.remove('player--winner');
   player1EL.classList.remove('player--winner');
@@ -41,8 +42,11 @@ const switchPlayers = function () {
 };
 
 //Rolling dice functionality
-
+//init function --> initial specification of the variables that i am using 
 init();
+
+//We made 3 buttons so we have 1 eventListener for each one of them
+
 btnRollDice.addEventListener('click', function () {
   if (playing) {
     //Generating random dice
@@ -65,6 +69,7 @@ btnRollDice.addEventListener('click', function () {
 });
 
 btnHold.addEventListener('click', function () {
+  
   //add current score to active players score
   if (playing) {
     scores[activePlayer] += currentScore;
@@ -87,5 +92,5 @@ btnHold.addEventListener('click', function () {
     }
   }
 });
-
+//whem New Game button pressed we call the init function to zero the variables and reset graphics 
 btnNewGame.addEventListener('click', init);
